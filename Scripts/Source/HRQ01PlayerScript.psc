@@ -7,10 +7,11 @@ MiscObject Property SabreCatPelt Auto
 MiscObject Property SabreCatSnowPelt Auto
 MiscObject Property WolfPelt Auto
 MiscObject Property WolfIcePelt Auto
+Armor Property Reward Auto
 Quest Property HRQ01Quest Auto
 
 Event OnInit()
-	If HRQ01Quest.IsStageDone(90)
+	If HRQ01Quest.IsCompleted()
 		GoToState("Inactive")
 	Else
 		GoToState("Active")
@@ -25,9 +26,11 @@ State Active
 		AddInventoryEventFilter(SabreCatSnowPelt)
 		AddInventoryEventFilter(WolfPelt)
 		AddInventoryEventFilter(WolfIcePelt)
+		AddInventoryEventFilter(Reward)
 	EndEvent
 
 	Event OnItemAdded(Form akBaseItem, Int aiItemCount, ObjectReference akItemReference, ObjectReference akSourceContainer)
+		GoToState("Inactive")
 		If HRQ01Quest.IsStageDone(20)
 			If !HRQ01Quest.IsStageDone(30) && akBaseItem == BearPelt
 				HQR01QS.BearPeltCount()
@@ -42,13 +45,16 @@ State Active
 			ElseIf !HRQ01Quest.IsStageDone(80) && akBaseItem == WolfIcePelt
 				HQR01QS.WolfIcePeltCount()
 			EndIf
-		EndIf
-		If HRQ01Quest.IsStageDone(90)
-			GoToState("Inactive")
+		ElseIf HRQ01Quest.GetCurrentStageID() == 170 && akBaseItem == Reward
+			HRQ01Quest.SetCurrentStageID(200) ;Reward is picked up, complete the quest.
+	    EndIf
+		If !HRQ01Quest.IsCompleted()
+			GoToState("Active")
 		EndIf
 	EndEvent
 
 	Event OnItemRemoved(Form akBaseItem, Int aiItemCount, ObjectReference akItemReference, ObjectReference akDestContainer)
+		GoToState("Inactive")
 		If HRQ01Quest.IsStageDone(20) && !HRQ01Quest.IsStageDone(30)
 			If !HRQ01Quest.IsStageDone(30) && akBaseItem == BearPelt
 				HQR01QS.BearPeltCount()
@@ -64,8 +70,8 @@ State Active
 				HQR01QS.WolfIcePeltCount()
 			EndIf
 		EndIf
-		If HRQ01Quest.IsStageDone(90)
-			GoToState("Inactive")
+		If !HRQ01Quest.IsCompleted()
+			GoToState("Active")
 		EndIf
 	EndEvent
 EndState

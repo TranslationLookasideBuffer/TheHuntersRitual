@@ -7,10 +7,14 @@ ReferenceAlias Property EntrancePortcullis Auto
 
 Auto State Active
 	Event OnTriggerEnter(ObjectReference akTriggerRef)
+		GoToState("Inactive")
         If HRQ01Quest.GetCurrentStageID() == 100 && akTriggerRef == PlayerRef
             EntrancePortcullis.GetReference().SetOpen(False)
             Audio.Play(GetReference())
+			HRQ01Quest.SetCurrentStageID(110)
 			GoToState("Inactive")
+		Else
+			GoToState("Active")
 		EndIf
 	EndEvent
 EndState
