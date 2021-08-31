@@ -1,2 +1,3 @@
 # TheHuntersRitual
-A learning Skyrim Mod
+
+An example mod for learning the different components of modding in Skyrim.
