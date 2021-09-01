@@ -11,7 +11,7 @@ Armor Property Reward Auto
 Quest Property HRQ01Quest Auto
 
 Event OnInit()
-	If HRQ01Quest.IsCompleted()
+	If HRQ01Quest.IsStageDone(90)
 		GoToState("Inactive")
 	Else
 		GoToState("Active")
@@ -45,10 +45,8 @@ State Active
 			ElseIf !HRQ01Quest.IsStageDone(80) && akBaseItem == WolfIcePelt
 				HQR01QS.WolfIcePeltCount()
 			EndIf
-		ElseIf HRQ01Quest.GetCurrentStageID() == 170 && akBaseItem == Reward
-			HRQ01Quest.SetCurrentStageID(200) ;Reward is picked up, complete the quest.
 	    EndIf
-		If !HRQ01Quest.IsCompleted()
+		If !HRQ01Quest.IsStageDone(90)
 			GoToState("Active")
 		EndIf
 	EndEvent
@@ -70,7 +68,7 @@ State Active
 				HQR01QS.WolfIcePeltCount()
 			EndIf
 		EndIf
-		If !HRQ01Quest.IsCompleted()
+		If !HRQ01Quest.IsStageDone(90)
 			GoToState("Active")
 		EndIf
 	EndEvent
