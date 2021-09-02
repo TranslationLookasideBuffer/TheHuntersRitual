@@ -2,6 +2,10 @@
 
 An example mod for learning the different components of modding in Skyrim.
 
+## Screenshots
+
+See [this page](screenshots/screenshots.md).
+
 ## What does it do?
 
 This adds a small shack in Falkreath hold and a new dungeon in the Reach. These two locations are visted as part of a quest that requires collecting animal pelts and a fight in the dungeon. While fairly simple this was never meant to be a _beautiful_, _immersive_ mod, but rather one to learn the ropes of the various systems involved in modding Skyrim.
