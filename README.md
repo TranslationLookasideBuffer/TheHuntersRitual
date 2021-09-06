@@ -91,5 +91,5 @@ You get a decent enchanted amulet at the end, so that's cool.
     ```
     Just _baffling_.
 
-* I with Papyrus had a styleguide and linter. That's a least one nice thing about golang.
+* I wish Papyrus had a styleguide and linter. That's a least one nice thing about golang.
 * The Creation Kit is extremely tempermental, save _often_.
