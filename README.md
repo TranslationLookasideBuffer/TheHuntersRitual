@@ -2,6 +2,8 @@
 
 An example mod for learning the different components of modding in Skyrim.
 
+This mod was originally for Skyrim LE (Oldrim) and has since been ported to Skyrim Special Edition.
+
 ## Screenshots
 
 See [this page](screenshots/screenshots.md).
